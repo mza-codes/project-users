@@ -4,7 +4,7 @@
   "description": "cointab assigned project",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd backend && yarn run dev\" \"cd frontend && yarn dev\" "
+    "dev": "concurrently \"cd api && yarn run dev\" \"cd client && yarn dev\" "
   },
   "author": "mza-codes",
   "license": "ISC",

@@ -1,0 +1,1 @@
+export var btnCls = `hover:bg-opacity-90 bg-opacity-50 px-4 py-2 font-semibold disabled:cursor-not-allowed disabled:bg-zinc-500`;

@@ -1,0 +1,56 @@
+ {
+    "gender": "male",
+    "name": {
+        "title": "Mr",
+        "first": "Owen",
+        "last": "Ennis"
+    },
+    "location": {
+        "street": {
+            "number": 2682,
+            "name": "Arctic Way"
+        },
+        "city": "Keswick",
+        "state": "Ontario",
+        "country": "Canada",
+        "postcode": "E6E 7Q3",
+        "coordinates": {
+            "latitude": "-69.9409",
+            "longitude": "-172.6657"
+        },
+        "timezone": {
+            "offset": "+8:00",
+            "description": "Beijing, Perth, Singapore, Hong Kong"
+        }
+    },
+    "email": "owen.ennis@example.com",
+    "login": {
+        "uuid": "c4d427af-8ae7-4651-a3cc-359d41f0c7ad",
+        "username": "silverrabbit313",
+        "password": "cheese",
+        "salt": "HN5Dytfj",
+        "md5": "4f0d4afe8b98ba1adbf2447e66adb405",
+        "sha1": "5156aa7873645f44d207b8fe2a795bd96843fefc",
+        "sha256": "15b5a936fec769961a2f916fda5d72930a6ca474ce7195011f2401f78ec4dfbc"
+    },
+    "dob": {
+        "date": "1963-07-13T15:39:45.500Z",
+        "age": 59
+    },
+    "registered": {
+        "date": "2013-10-28T11:27:53.743Z",
+        "age": 9
+    },
+    "phone": "G09 A74-6886",
+    "cell": "D10 W70-9988",
+    "id": {
+        "name": "SIN",
+        "value": "410504153"
+    },
+    "picture": {
+        "large": "https://randomuser.me/api/portraits/men/87.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/87.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/87.jpg"
+    },
+    "nat": "CA"
+}
