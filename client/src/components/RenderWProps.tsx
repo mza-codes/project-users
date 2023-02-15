@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Table from "../pages/Table";
+import UsersPage from "../pages/UsersPage";
 import useApiStore from "../store/useApi";
 import Loader from "./Loader";
 
@@ -16,6 +16,6 @@ export default function PopulateWProps() {
 
     if (loading) return <Loader color="black" />;
     else return (
-        <Table users={users} />
+        <UsersPage users={users} />
     );
 };

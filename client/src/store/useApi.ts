@@ -35,11 +35,10 @@ const useApiStore = create<APIStore>()((set, get) => ({
     },
     async fetchData() {
         get().setLoading(true);
-        const url = `https://randomuser.me/api?results=10`;
+        const url = `https://randomuser.me/api?results=50`;
         try {
             const { data } = await axios.get(url, { signal: genSignal() });
-            console.log("DATA: ", data);
-            toast.success("Data Fetching Success!");
+            // toast.success("Data Fetching Success!");
             const status = await get().populateWServer(data);
             return status;
         } catch (err: any) {
@@ -56,7 +55,6 @@ const useApiStore = create<APIStore>()((set, get) => ({
             const { data } = await API.post(`/users/add/bulk-users`,
                 usersData, { signal: genSignal() });
 
-            console.log("RESPONSE from API: ", data);
             toast.success(data?.message ?? "Action Complete!");
             stat = true;
         } catch (err: any) {
@@ -72,7 +70,7 @@ const useApiStore = create<APIStore>()((set, get) => ({
             const { data } = await API.delete(`/users/delete/bulk-users`,
                 { signal: genSignal() });
             get().setField("users", []);
-            console.log("RESPONSE from API: ", data);
+
             toast.success(data?.message ?? "Deletion of Users Success!");
         } catch (err: any) {
             get().handleError(err, "Error Deleting Data!");
@@ -87,7 +85,6 @@ const useApiStore = create<APIStore>()((set, get) => ({
                 { signal: signal });
             get().setField("users", data?.users ?? []);
 
-            console.log("RESPONSE from API: ", data);
             toast.success(data?.message ?? "Request for GetAllUsers Complete!");
         } catch (err: any) {
             get().handleError(err, "Error while getting bulk users!");

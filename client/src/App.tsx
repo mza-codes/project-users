@@ -16,9 +16,9 @@ function App() {
                 reverseOrder={true}
                 containerClassName="capitalize truncate"
                 toastOptions={{ duration: 3600 }}
+                gutter={4}
             />
             {loading && <CancelButton />}
-            <CancelButton />
             <BrowserRouter>
                 <Router />
             </BrowserRouter>
