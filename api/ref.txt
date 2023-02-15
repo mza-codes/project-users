@@ -54,3 +54,60 @@
     },
     "nat": "CA"
 }
+
+{
+    "gender": "female",
+    "name": {
+        "title": "Miss",
+        "first": "Danielle",
+        "last": "Ferguson"
+    },
+    "location": {
+        "street": {
+            "number": 8872,
+            "name": "The Avenue"
+        },
+        "city": "Wicklow",
+        "state": "Galway City",
+        "country": "Ireland",
+        "postcode": 71129,
+        "coordinates": {
+            "latitude": "12.2754",
+            "longitude": "34.0634"
+        },
+        "timezone": {
+            "offset": "+3:00",
+            "description": "Baghdad, Riyadh, Moscow, St. Petersburg"
+        }
+    },
+    "email": "danielle.ferguson@example.com",
+    "login": {
+        "uuid": "e686aedd-2982-4c4d-813c-8911827d6ab6",
+        "username": "brownkoala217",
+        "password": "maynard",
+        "salt": "0IihBgv9",
+        "md5": "cecdd7f3abde8f03ebf8e3d36107cd42",
+        "sha1": "554eb619528c669569a0c00e979fbc79dc9d7326",
+        "sha256": "300667c47f4336061ffadbffa3cf5899aa18488f754f1cbfe6b707bd6666c776"
+    },
+    "dob": {
+        "date": "1958-03-19T19:40:48.709Z",
+        "age": 64
+    },
+    "registered": {
+        "date": "2004-08-20T02:27:50.681Z",
+        "age": 18
+    },
+    "phone": "061-032-0520",
+    "cell": "081-148-8188",
+    "id": {
+        "name": "PPS",
+        "value": "0718628T"
+    },
+    "picture": {
+        "large": "https://randomuser.me/api/portraits/women/80.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/80.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/80.jpg"
+    },
+    "nat": "IE"
+}

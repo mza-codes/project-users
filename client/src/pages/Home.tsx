@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { btnCls } from "../components";
 import Loader from "../components/Loader";
 import useApiStore from "../store/useApi";
@@ -5,6 +6,9 @@ import useApiStore from "../store/useApi";
 export default function Home() {
     const loading = useApiStore((s) => s.isLoading);
     const fetchData = useApiStore((s) => s.fetchData);
+    const deleteData = useApiStore(s => s.deleteData);
+
+    console.log("ENV:", process.env?.VITE_APP_API_URL);
 
     return (
         <section className="flex flex-col items-center gap-2">
@@ -19,18 +23,18 @@ export default function Home() {
                 </button>
                 <button
                     type="button"
+                    onClick={deleteData}
                     disabled={loading}
                     className={`${btnCls}  bg-rose-700 text-zinc-900 `}
                 >
                     Delete Users
                 </button>
-                <button
+                <Link to="/users"
                     type="button"
-                    disabled={loading}
                     className={`${btnCls} bg-green-600 text-zinc-900 `}
                 >
                     User Details
-                </button>
+                </Link>
             </div>
             {loading && (
                 <div className="bg-white bg-opacity-20 my-3 p-3 rounded-sm">
