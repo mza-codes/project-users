@@ -2,6 +2,11 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import { PrismaClient } from '@prisma/client';
+
+export const prisma = new PrismaClient({
+    log: ['query', 'info', 'warn', 'error'],
+});
 
 const app = express();
 const PORT = process.env.PORT ?? 5000;
@@ -23,6 +28,7 @@ app.get("/", (req, res) => {
     res.send("<h2>Initial Response !</h2>");
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    await prisma.$connect(); 
     console.log(`Server Started on PORT:${PORT}`);
 });

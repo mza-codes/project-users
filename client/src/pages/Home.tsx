@@ -1,3 +1,4 @@
+import { btnCls } from "../components";
 import Loader from "../components/Loader";
 import useApiStore from "../store/useApi";
 
@@ -41,4 +42,4 @@ export default function Home() {
     );
 }
 
-var btnCls = `hover:bg-opacity-90 bg-opacity-50 px-4 py-2 font-semibold disabled:cursor-not-allowed disabled:bg-zinc-500`;
+
