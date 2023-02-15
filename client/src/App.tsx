@@ -14,7 +14,7 @@ function App() {
             <Toaster
                 position="top-center"
                 reverseOrder={true}
-                containerClassName="capitalize"
+                containerClassName="capitalize truncate"
                 toastOptions={{ duration: 3600 }}
             />
             {loading && <CancelButton />}

@@ -3,13 +3,14 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
-  sid        String @id @default(uuid())
-  fullname   String
+  sid        String @id @unique @default(uuid())
+  gender     GENDER
   name       Json
   location   Json
   email      String @unique
@@ -21,4 +22,10 @@ model User {
   id         Json
   picture    Json
   nat        String
+}
+
+enum GENDER {
+  male
+  female
+  other
 }
