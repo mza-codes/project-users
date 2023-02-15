@@ -7,6 +7,7 @@ import { genRes } from "../utils/Response.js";
  */
 
 export const handleCreateUsers = async (req, res, next) => {
+    console.log("REQUEST BODY: ", req.body);
     try {
         throw new Error("Working is kk");
     } catch (err) {

@@ -14,7 +14,7 @@ export const genRes = (res, code, success, msg, payload) => {
 function genBody(success = false, msg = "", payload = {}) {
     return {
         success,
-        msg,
+        message: msg,
         ...payload
     };
 };
