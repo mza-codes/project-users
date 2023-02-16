@@ -1,3 +1,7 @@
-body>div:last-child {
+body>div:first-child {
+    display: block;
+}
+
+body>div {
     display: none;
 }

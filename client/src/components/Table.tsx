@@ -3,6 +3,7 @@ import {
     ColumnDirective,
     ColumnsDirective,
     ContextMenu,
+    Filter,
     GridComponent,
     Inject,
     Page,
@@ -17,23 +18,27 @@ type Props = {
 
 export default function Table({ users }: Props) {
     return (
-        <GridComponent className="capitalize font-medium"
+        <GridComponent
+            filterSettings={{ type: "CheckBox" }}
             allowPaging
             allowSorting
-            id="users-table"
             dataSource={users}
             pageSettings={{ pageSize: 13 }}
+            allowFiltering={true}
         >
             <ColumnsDirective>
                 <ColumnDirective
+                    field="fullname"
                     width="40"
                     textAlign="Left"
                     headerText="User"
                     template={generateImg}
                 />
                 <ColumnDirective field="email" width="40" textAlign="Left" headerText="Email" />
+                <ColumnDirective field="dob.age" width="10" textAlign="Left" headerText="Age" />
                 <ColumnDirective field="gender" width="20" textAlign="Left" headerText="Gender" />
                 <ColumnDirective
+                    field="location.country"
                     width="40"
                     textAlign="Left"
                     headerText="Country"
@@ -41,7 +46,7 @@ export default function Table({ users }: Props) {
                 />
                 <ColumnDirective field="phone" width="30" textAlign="Left" headerText="Phone" />
             </ColumnsDirective>
-            <Inject services={[Resize, Page, Sort, ContextMenu]} />
+            <Inject services={[Resize, Page, Sort, ContextMenu, Filter]} />
         </GridComponent>
     );
 }
@@ -67,11 +72,22 @@ function generateCity(user: DBUser) {
     );
 }
 
-/** 
- * <ColumnDirective
-                    field="fullname"
-                    width="50"
-                    textAlign="Left"
-                    headerText="FullName"
-                />
- */
+/** <ColumnDirective
+     field="fullname"
+     width="50"
+     textAlign="Left"
+     headerText="FullName" /> 
+
+     toolbar={["Search"]}
+            searchSettings={{
+                fields: [
+                    "email",
+                    "dob.age",
+                    "location.city",
+                    "location.state",
+                    "location.country",
+                    "gender",
+                    "fullname",
+                ],
+            }}
+*/
