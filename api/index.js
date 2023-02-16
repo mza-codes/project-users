@@ -1,6 +1,5 @@
 import "dotenv/config";
-import express from "express";
-import cors from "cors";
+import express, { urlencoded } from "express";
 import userRoutes from "./routes/userRoutes.js";
 import { PrismaClient } from '@prisma/client';
 import path from "path";
@@ -17,6 +16,11 @@ if (isProduction) {
     logs = [];
 };
 
+console = {
+    log: () => false,
+    count: () => false,
+};
+
 export const prisma = new PrismaClient({
     log: logs
 });
@@ -24,19 +28,24 @@ export const prisma = new PrismaClient({
 const app = express();
 
 app.use(express.json());
+app.use(urlencoded({ extended: true }));
 app.use(express.static("build"));
-app.use(cors({
-    origin: domain
-}));
+
+// app.use(cors({
+//     origin: domain
+// }));
 
 app.use("/api/v1/users", userRoutes);
 
 app.get("/", (req, res) => {
+    console.log("Sendding: ", __dirname, "/build/index.html");
     res.sendFile(`${__dirname}/build/index.html`);
+    res.end();
 });
 
 app.get("*", (req, res) => {
     res.redirect("/");
+    res.end();
 });
 
 app.listen(PORT, async () => {
