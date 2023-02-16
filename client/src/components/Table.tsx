@@ -35,7 +35,7 @@ export default function Table({ users }: Props) {
                     template={generateImg}
                 />
                 <ColumnDirective field="email" width="40" textAlign="Left" headerText="Email" />
-                <ColumnDirective field="dob.age" width="10" textAlign="Left" headerText="Age" />
+                <ColumnDirective field="dob.age" width="20" textAlign="Left" headerText="Age" />
                 <ColumnDirective field="gender" width="20" textAlign="Left" headerText="Gender" />
                 <ColumnDirective
                     field="location.country"
