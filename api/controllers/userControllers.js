@@ -16,8 +16,9 @@ export const handleCreateUsers = async (req, res, next) => {
 
     try {
         const users = await prisma.user.createMany({ data: usersArray });
-        console.log("USERS Create RESPONSE: ", users);
-        console.log("Total Users Added in DB: ", usersArray?.length);
+        console.log("USERS Create RESPONSE: ", users,
+            "\n Total Users Added in DB: ", usersArray?.length);
+
         return genRes(res, 201, true, `${usersArray?.length ?? 0} Users Added to Database!`, { users });
     } catch (err) {
         console.log("Error in handleCreateUsers: ", err);
@@ -28,7 +29,7 @@ export const handleCreateUsers = async (req, res, next) => {
 export const handleDeletion = async (req, res, next) => {
     try {
         const users = await prisma.user.deleteMany();
-        console.log("USERS Delete RESPONSE: ", users);
+        console.log("ALL USERS Deleted RESPONSE: ", users);
         return genRes(res, 200, true, "All Users deleted from Database!", { users });
     } catch (err) {
         console.log("Error in handleDeletion: ", err);
@@ -39,7 +40,8 @@ export const handleDeletion = async (req, res, next) => {
 export const getBulkUsers = async (req, res, next) => {
     try {
         const users = await prisma.user.findMany();
-        console.log("USERS GET RESPONSE: ", users);
+        console.log(`Sending ${users.length} Users to Client!`);
+
         if (users?.length <= 0) throw new Error("No Users Found in Database!");
         return genRes(res, 200, true, `Fetched ${users.length} Users from Database!`, { users });
     } catch (err) {
