@@ -1,7 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import UsersPage from "../pages/UsersPage";
 import useApiStore from "../store/useApi";
-// import Table from "./Table";
 import TextLoader from "./TextLoader";
 
 const Table = lazy(() => import("./Table"));
