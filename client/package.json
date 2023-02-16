@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "deploy-build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "npx tailwindcss build src/index.css -o build.css && yarn build"
+    "production": "npx tailwindcss build src/index.css -o build.css && yarn build",
+    "deploy": "npx tailwindcss build src/index.css -o build.css && yarn run deploy-build"
   },
   "dependencies": {
     "@syncfusion/ej2-react-grids": "^20.4.50",
