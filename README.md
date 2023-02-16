@@ -1,22 +1,20 @@
 <p align="center">
-  <a href="#"><img src="https://github.com/mza-codes/minimal-react/blob/62fd10162f49d62abf1aa6b4ec1d5fadbab4a38f/public/logo.png" width="50" alt="logo_m" border="0"></a>
-  <br />
-  <h3 align="center">Vite TypeScript Boilerplate</h3>
-  <p align="center"> Integrated With <strong>tailwindcss!</strong> </p>
+  <h3 align="center">Users Api</h3>
+  <p align="center"><strong>M E R N</strong> </p>
+
+    Create ENV FILE (MUST)
+    npm install
+    yarn run setup
+    cd api/ && npm run predeploy
+    yarn run dev
+    
   <p align="center">
-    <b> Includes Extra Fonts Including Poppins!</b>
-    <br />
-    <b> Includes Deployment Script !</b>
-    <br />
-    <b> Based on Yarn, Added Axios & Router-Dom!</b>
-    <br />
-    <b> Feel Free to Use!</b>
-    <br /><br />
+  <br />
     <a href="https://github.com/mza-codes/"><strong>Author</strong></a>
     ·
-    <a href="https://github.com/mza-codes/minimal-react/issues/"><strong>Report</strong></a>
+    <a href="https://github.com/mza-codes/project-users/issues/"><strong>Report</strong></a>
     ·
-    <a href="https://github.com/mza-codes/minimal-react/pulls/"><strong>Pull Request</strong></a>
+    <a href="https://github.com/mza-codes/project-users/pulls/"><strong>Pull Request</strong></a>
   </p>
 </p>
 

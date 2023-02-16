@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"cd api && yarn run dev\" \"cd client && yarn dev\" ",
-    "setup": "cd api && npm install && cd ../client && yarn install"
+    "setup": "cd api && npm install && cd ../client && yarn install && cd ..",
+    "deploy": "npm i yarn && bash ./deploy.sh"
   },
   "author": "mza-codes",
   "license": "ISC",

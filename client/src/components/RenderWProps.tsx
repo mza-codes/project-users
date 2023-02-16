@@ -13,7 +13,7 @@ export default function PopulateWProps() {
 
     useEffect(() => {
         const controller = new AbortController();
-        getUsers(controller.signal);
+        users.length <= 0 && getUsers(controller.signal);
         return () => controller.abort();
     }, []);
 
@@ -28,7 +28,6 @@ export default function PopulateWProps() {
         return (
             <Suspense fallback={<TextLoader />}>
                 <section className="p-2 pt-[74px]">
-                    
                     <Table users={users} />
                 </section>
             </Suspense>
