@@ -1,6 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
 import CancelButton from "./components/CancelButton";
+import Header from "./components/Header";
 import Router from "./routes";
 import useApiStore from "./store/useApi";
 
@@ -20,6 +21,7 @@ function App() {
             />
             {loading && <CancelButton />}
             <BrowserRouter>
+                <Header />
                 <Router />
             </BrowserRouter>
         </main>

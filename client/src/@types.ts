@@ -53,7 +53,8 @@ const obj = {
         medium: "https://randomuser.me/api/portraits/med/women/59.jpg",
         thumbnail: "https://randomuser.me/api/portraits/thumb/women/59.jpg"
     },
-    nat: "NO"
+    nat: "NO",
+    fullname: "String"
 };
 
 export type DBUser = typeof obj;

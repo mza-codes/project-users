@@ -10,6 +10,7 @@
     "deploy": "npx tailwindcss build src/index.css -o build.css && yarn build"
   },
   "dependencies": {
+    "@syncfusion/ej2-react-grids": "^20.4.50",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",

@@ -12,6 +12,7 @@ model User {
   sid        String @id @unique @default(uuid())
   gender     GENDER
   name       Json
+  fullname   String
   location   Json
   email      String @unique
   login      Json
