@@ -6,9 +6,14 @@ import useApiStore from "../store/useApi";
 export default function Home() {
     const loading = useApiStore((s) => s.isLoading);
     const fetchData = useApiStore((s) => s.fetchData);
-    const deleteData = useApiStore(s => s.deleteData);
+    const deleteData = useApiStore((s) => s.deleteData);
 
-    console.log("ENV:", process.env?.VITE_APP_API_URL);
+    function handleDelete() {
+        if (window.confirm("This will delete all users in Database,Continue ?")) {
+            deleteData();
+        }
+        return;
+    }
 
     return (
         <section className="flex flex-col items-center gap-2">
@@ -23,16 +28,13 @@ export default function Home() {
                 </button>
                 <button
                     type="button"
-                    onClick={deleteData}
+                    onClick={handleDelete}
                     disabled={loading}
                     className={`${btnCls}  bg-rose-700 text-zinc-900 `}
                 >
                     Delete Users
                 </button>
-                <Link to="/users"
-                    type="button"
-                    className={`${btnCls} bg-green-600 text-zinc-900 `}
-                >
+                <Link to="/users" type="button" className={`${btnCls} bg-green-600 text-zinc-900 `}>
                     User Details
                 </Link>
             </div>
@@ -45,5 +47,3 @@ export default function Home() {
         </section>
     );
 }
-
-

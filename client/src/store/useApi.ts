@@ -1,6 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { create } from "zustand";
+import { DBUser } from "../@types";
 import { API } from "./api";
 let controller: AbortController;
 
@@ -85,7 +86,7 @@ const useApiStore = create<APIStore>()((set, get) => ({
                 { signal: signal });
             get().setField("users", data?.users ?? []);
 
-            toast.success(data?.message ?? "Request for GetAllUsers Complete!");
+            // toast.success(data?.message ?? "Request for GetAllUsers Complete!");
         } catch (err: any) {
             get().handleError(err, "Error while getting bulk users!");
         } finally {
@@ -101,7 +102,7 @@ function genSignal() {
 
 type store = {
     isLoading: boolean
-    users: Object[] | [any]
+    users: DBUser[] | []
 };
 
 type field = keyof store;

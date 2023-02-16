@@ -1,17 +1,20 @@
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 import PopulateWProps from "./components/RenderWProps";
 import Home from "./pages/Home";
 
 export default function Router() {
-
     return useRoutes([
         {
             path: "/",
-            element: <Home />
+            element: <Home />,
         },
         {
             path: "/users",
-            element: <PopulateWProps />
-        }
-    ])
-};
+            element: <PopulateWProps />,
+        },
+        {
+            path: "*",
+            element: <Navigate to="/" />,
+        },
+    ]);
+}

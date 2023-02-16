@@ -15,6 +15,9 @@ export const handleCreateUsers = async (req, res, next) => {
     };
 
     try {
+        usersArray.forEach((value) => {
+            value.fullname = `${value.name.title} ${value.name.first} ${value.name.last}`;
+        });
         const users = await prisma.user.createMany({ data: usersArray });
         console.log("USERS Create RESPONSE: ", users,
             "\n Total Users Added in DB: ", usersArray?.length);
