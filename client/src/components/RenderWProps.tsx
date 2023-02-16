@@ -11,7 +11,7 @@ export default function PopulateWProps() {
 
     useEffect(() => {
         const controller = new AbortController();
-        users.length <= 0 && getUsers(controller.signal);
+        getUsers(controller.signal);
         return () => controller.abort();
     }, []);
 
