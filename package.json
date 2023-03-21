@@ -1,0 +1,16 @@
+{
+  "name": "mern-base",
+  "version": "1.0.0",
+  "description": "mern base",
+  "scripts": {
+    "dev": "concurrently \"cd server && yarn dev\" \"cd client && yarn dev\" ",
+    "setup": "bash ./install.sh",
+    "deploy": "npm i yarn && bash ./deploy.sh"
+  },
+  "author": "mza-codes",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "yarn": "^1.22.19"
+  }
+}
