@@ -1,0 +1,70 @@
+.customField {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    // align-items: center;
+    gap: 5px;
+    position: relative;
+    --inputbox-border: 2px;
+    transition: all 600ms ease-in-out;
+
+    .label {
+        font-weight: 500;
+        text-align: start;
+        color: #222;
+        text-transform: capitalize;
+    }
+
+    input {
+        border: var(--inputbox-border) solid #999;
+        cursor: text;
+        outline: 1px gray;
+        padding: 12px;
+        min-width: 240px;
+        border-radius: 6px;
+        background-color: rgba($color: #fff, $alpha: 0.6);
+        color: #000;
+
+        &:read-only {
+            border: var(--inputbox-border) solid rgb(121, 121, 121);
+            pointer-events: none;
+            color: gray;
+        }
+    }
+
+    .error {
+        border: var(--inputbox-border) solid rgb(255, 101, 101);
+    }
+
+    .success {
+        border: var(--inputbox-border) solid rgb(51, 202, 37);
+    }
+
+    .normal {
+        border: var(--inputbox-border) solid rgb(110, 110, 110);
+    }
+
+    .warn {
+        border: var(--inputbox-border) solid rgb(255, 208, 0) !important;
+    }
+
+    .err-msg {
+        color: rgb(255, 102, 102);
+        text-transform: capitalize;
+        font-size: smaller;
+        min-width: 250px;
+        width: 100%;
+        max-width: 400px;
+        font-weight: 500;
+
+        &::before {
+            content: "! ";
+            color: transparent;
+        }
+    }
+}
+
+.view_btn {
+    padding-right: 3rem;
+}
