@@ -33,12 +33,25 @@
         }
     }
 
+    select {
+        padding: 4px 8px;
+        border: 2px solid #b3000059;
+        outline: transparent;
+        border-radius: 4px;
+        text-transform: capitalize;
+        &:focus,
+        &:focus-visible,
+        &:focus-within {
+            border-color: rgb(0, 155, 0);
+        }
+    }
+
     .error {
         border: var(--inputbox-border) solid rgb(255, 101, 101);
     }
 
     .success {
-        border: var(--inputbox-border) solid rgb(51, 202, 37);
+        border: var(--inputbox-border) solid rgb(13, 160, 0);
     }
 
     .normal {
@@ -48,20 +61,20 @@
     .warn {
         border: var(--inputbox-border) solid rgb(255, 208, 0) !important;
     }
+}
 
-    .err-msg {
-        color: rgb(255, 102, 102);
-        text-transform: capitalize;
-        font-size: smaller;
-        min-width: 250px;
-        width: 100%;
-        max-width: 400px;
-        font-weight: 500;
+.err-msg {
+    color: rgb(255, 102, 102);
+    text-transform: capitalize;
+    font-size: smaller;
+    min-width: 250px;
+    width: 100%;
+    max-width: 400px;
+    font-weight: 500;
 
-        &::before {
-            content: "! ";
-            color: transparent;
-        }
+    &::before {
+        content: "! ";
+        color: transparent;
     }
 }
 
