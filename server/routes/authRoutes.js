@@ -1,11 +1,13 @@
 import express from "express";
-import { createUser } from "../controllers/authControllers.js";
+import { createUser, validateUName } from "../controllers/authControllers.js";
 import { isValidUser } from "../middlewares/isValidUser.js";
 
 const router = express.Router();
 
-router.get("/register", createUser);
+/** @param { /api/v1/auth } */
 
-router.get("/hi", isValidUser);
+router.post("/register", createUser);
+
+router.get("/check-user/:username", validateUName);
 
 export { router as authRoutes };

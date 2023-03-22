@@ -11,6 +11,9 @@ export default function Home() {
                 <Link className="bg-green-400 hover:bg-green-500 btn btn-hover" to="/login">
                     LogIn
                 </Link>
+                <Link className="bg-cyan-400 hover:bg-cyan-500 btn btn-hover" to="/register-success">
+                    Success
+                </Link>
             </div>
         </section>
     );

@@ -12,6 +12,7 @@ export const signupSchema = Yup.object().shape({
     // bio: Yup.string().required().min(10).max(140),
     lang: Yup.string().oneOf(langs, "Invalid Selection!").required(),
     username: Yup.string().required().min(5).max(30)
+        .test("white-space", "Username must not include spaces", (val) => !(/\s/).test(val))
         .test("isValidUserName", "UserName not Available", (value) => isValidUserName(value)),
 });
 

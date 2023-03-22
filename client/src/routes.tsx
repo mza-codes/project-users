@@ -1,22 +1,27 @@
-import { useRoutes } from "react-router-dom"
-import Auth from "./pages/Auth"
-import Home from "./pages/Home"
+import { useRoutes } from "react-router-dom";
+import Auth from "./pages/Auth";
+import Home from "./pages/Home";
+import RegisterSuccess from "./pages/RegisterSuccess";
 
-type Props = {}
+type Props = {};
 
-export default function Routes({ }: Props) {
+export default function Routes({}: Props) {
     return useRoutes([
         {
             path: "/",
-            element: <Home />
+            element: <Home />,
         },
         {
             path: "/signup",
-            element: <Auth signup />
+            element: <Auth signup />,
         },
         {
             path: "/login",
-            element: <Auth login />
-        }
-    ])
-};
+            element: <Auth login />,
+        },
+        {
+            path: "/register-success",
+            element: <RegisterSuccess />,
+        },
+    ]);
+}
