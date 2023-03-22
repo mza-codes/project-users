@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { isValidUserName } from "./utils/utils";
 
 export const langs = ["english", "french", "espanol", "arabic", "spanish", "hindi", "other"];
 
@@ -14,15 +15,11 @@ export const signupSchema = Yup.object().shape({
         .test("isValidUserName", "UserName not Available", (value) => isValidUserName(value)),
 });
 
-export interface signupSchemaType extends Yup.Asserts<typeof signupSchema> { };
+export interface signupValues extends Yup.Asserts<typeof signupSchema> { };
 
-let test = 0;
-let previous = "";
-async function isValidUserName(str: string) {
-    previous = str;
-    if (str.length < 5) return false;
-    test++;
-    console.log(`Testing name: ${str} ->`, test);
-    if (test >= 10) return true;
-    return false;
-};
+export const loginSchema = Yup.object().shape({
+    email: Yup.string().email().required().min(5).max(70),
+    password: Yup.string().required().min(5).max(24),
+});
+
+export interface loginValues extends Yup.Asserts<typeof loginSchema> { };
