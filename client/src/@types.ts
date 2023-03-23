@@ -8,6 +8,8 @@ export interface DBUser {
     place: string;
     lang: string;
     username: string;
+    image_url: string | null;
+    mobile: number | null;
 }
 
 export interface DBUserAdmin {

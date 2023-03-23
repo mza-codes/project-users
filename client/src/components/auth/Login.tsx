@@ -1,8 +1,8 @@
 import { Form, Formik, FormikHelpers } from "formik";
-import { useState } from "react";
 import { loginSchema, loginValues } from "../../schema";
 import InputField from "../Input";
 import Loader from "../Loader";
+import useAuthService from "../../services/authService";
 
 const initialValues: loginValues = {
     email: "",
@@ -11,16 +11,11 @@ const initialValues: loginValues = {
 };
 
 export default function Login() {
-    const [loading, setLoading] = useState(false);
+    const loading = useAuthService((s) => s.loading);
+    const loginUser = useAuthService((s) => s.loginUser);
 
-    function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
-        console.log({ values, actions });
-        setLoading(true);
-
-        setTimeout(() => {
-            setLoading(false);
-            actions.setSubmitting(false);
-        }, 4000);
+    async function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
+        const res = await loginUser(values);
     }
 
     return (

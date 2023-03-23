@@ -45,6 +45,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             ...data,
         }));
     },
+
     async fetchData(request: AxiosPromise) {
         get().setLoading(true);
         let error = null,
@@ -61,6 +62,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return [error, result];
         }
     },
+
     async signUp(payload) {
         const [err, data] = await get().fetchData(
             API.post(`/auth/register`, payload, { signal: genSignal() })
@@ -70,6 +72,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return true;
         } else return false;
     },
+
     async validateUName(uname: string) {
         validate = new AbortController();
         get().previous.value = uname;
@@ -85,6 +88,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return true;
         } else return false;
     },
+
     async adminLogin(formData) {
         const [err, data] = await get().fetchData(
             API.post(`/admin/auth/login`, formData, { signal: genSignal() })
@@ -99,6 +103,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return true;
         } else return false;
     },
+
     async adminSignup(formData) {
         const [err, data] = await get().fetchData(
             API.post(`/admin/auth/register`, formData, { signal: genSignal() })
@@ -108,6 +113,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return true;
         } else return false;
     },
+
     async getAllUsers(signal) {
         const [err, data] = await get().fetchData(API.get(`/admin/get-all-users`, { signal }));
         if (data?.success) {
@@ -115,15 +121,38 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return true;
         } else return false;
     },
+
     async toggleUser(user) {
         const [err, data] = await get().fetchData(
             API.put(`/admin/update-user/${user._id}`, { verified: !user.verified }, { signal: genSignal() })
         );
         if (data?.success) {
-            get().DBUsers.filter((u) => u._id !== user._id);
-            // @ts-ignore
-            get().DBUsers.push(data?.user);
+            get().getAllUsers(genSignal());
             toast.success(`One User updated Successfully!`);
+            return true;
+        } else return false;
+    },
+
+    async loginUser(formData) {
+        const [err, data] = await get().fetchData(API.post(`/auth/login`, formData, { signal: genSignal() }));
+        if (data?.success) {
+            get().setStore({
+                user: data?.user,
+                isActive: true,
+                isAdmin: false,
+                admin: null,
+            });
+            toast.success(data?.message ?? "User Login Complete!");
+            return data?.user;
+        } else return null;
+    },
+
+    async updateUser(id, payload) {
+        const [err, data] = await get().fetchData(
+            API.put(`/admin/update-user/${id}`, payload, { signal: genSignal() })
+        );
+        if (data?.success) {
+            toast.success(`User updated Successfully!`);
             return true;
         } else return false;
     },
@@ -164,4 +193,6 @@ export interface AuthService extends store {
     adminSignup: (formData: any) => Promise<boolean>;
     getAllUsers: (signal: AbortSignal) => Promise<boolean>;
     toggleUser: (user: DBUser) => Promise<boolean>;
+    loginUser: (data: any) => Promise<DBUser | null>;
+    updateUser: (id: string, payload: Partial<DBUser>) => Promise<boolean>;
 }

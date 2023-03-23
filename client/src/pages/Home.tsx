@@ -14,8 +14,12 @@ export default function Home() {
                 <Link className="bg-cyan-400 hover:bg-cyan-500 btn btn-hover" to="/register-success">
                     Success
                 </Link>
-                <Link className="bg-fuchsia-400 hover:bg-fuchsia-500 btn btn-hover" to="/admin/login">
+                <Link className="bg-fuchsia-400 hover:bg-fuchsia-500 btn btn-hover" to="/admin/dashboard">
                     Admin Panel
+                </Link>
+
+                <Link className="bg-lime-400 hover:bg-lime-500 btn btn-hover" to="/complete-profile">
+                    Complete Profile
                 </Link>
             </div>
         </section>

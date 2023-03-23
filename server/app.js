@@ -70,7 +70,7 @@ app.get("*", (req, res) => {
 // Error Handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   connectDB();
   log.info(`Node Server Started On PORT: ${PORT}`);

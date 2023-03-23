@@ -1,8 +1,8 @@
 import axios, { AxiosPromise } from "axios";
 
 export const API = axios.create({
-    baseURL: `http://localhost:5000/api/v1`,
-    timeout: 30 * 1000
+    baseURL: `http://localhost:4000/api/v1`,
+    timeout: 30 * 1000,
 });
 
 export async function fetchData(request: AxiosPromise) {
@@ -13,4 +13,4 @@ export async function fetchData(request: AxiosPromise) {
         console.log(`Error Fetching Data: `, err);
         return [err, null];
     }
-};
+}
