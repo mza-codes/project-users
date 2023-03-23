@@ -37,6 +37,14 @@ const userSchema = new mongoose.Schema(
       required: [true, "UserName is Required!"],
       unique: [true, "UserName must be unique!"],
     },
+    image_url: {
+      type: String,
+      default: null,
+    },
+    mobile: {
+      type: Number,
+      default: null,
+    },
   },
   { timestamps: true }
 );

@@ -5,8 +5,10 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import RegisterSuccess from "./pages/RegisterSuccess";
 import AdminDashboard from "./pages/AdminDashboard";
-import { IsLoggedOut, IsAdmin } from "./middlewares";
+import { IsLoggedOut, IsAdmin, IsUserActive } from "./middlewares";
 import LoadingPage from "./pages/LoadingPage";
+import ProfileCompletion from "./pages/ProfileCompletion";
+import UserDashboard from "./pages/UserDashboard";
 
 export default function Routes() {
     return useRoutes([
@@ -63,8 +65,20 @@ export default function Routes() {
             ),
         },
         {
-            path: "/loading",
-            element: <LoadingPage />,
+            path: "/complete-profile",
+            element: (
+                <IsUserActive>
+                    <ProfileCompletion />
+                </IsUserActive>
+            ),
+        },
+        {
+            path: "/dashboard",
+            element: (
+                <IsUserActive>
+                    <UserDashboard />
+                </IsUserActive>
+            ),
         },
         {
             path: "*",

@@ -1,5 +1,4 @@
 import { DBUser } from "../@types";
-import { MdError, MdVerifiedUser } from "react-icons/md";
 import { BsShieldFillCheck, BsShieldFillExclamation } from "react-icons/bs";
 import useAuthService from "../services/authService";
 
@@ -16,27 +15,25 @@ export default function UserTile({ user }: Props) {
                 <p className="text-lg">{user.email}</p>
                 <p className="text-lg capitalize">{user.lang}</p>
             </article>
-            <span className={`text-2xl ${!user.verified ? "text-red-400" : "text-emerald-400"}`}>
-                {!user.verified ? <MdError /> : <MdVerifiedUser />}
+            <span className={`text-sm ${!user.verified ? "text-red-400" : "text-emerald-400"}`}>
+                Status: {!user.verified ? <b>INACTIVE</b> : <b>ACTIVE</b>}
             </span>
 
             <div className="absolute right-2 bottom-2 flex flex-row-reverse flex-wrap gap-2">
-                {!user.verified ? (
+                {user.verified ? (
                     <button
                         disabled={loading}
-                        id="activate"
                         onClick={() => toggleUser(user)}
-                        title="Activate User"
+                        title="Deactivate User"
                         className={`text-3xl icon text-green-400`}
                     >
                         <BsShieldFillCheck />
                     </button>
                 ) : (
                     <button
+                        title="Activate User"
                         disabled={loading}
-                        id="deactivate"
                         onClick={() => toggleUser(user)}
-                        title="Deactivate User"
                         className={`text-3xl icon text-rose-500`}
                     >
                         <BsShieldFillExclamation />

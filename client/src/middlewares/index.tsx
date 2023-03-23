@@ -10,7 +10,7 @@ export function IsAdmin({ children }: Props) {
     console.log(`Status: `, isAdmin);
 
     if (isAdmin) return children;
-    else return <Navigate to={"/404"} />;
+    else return <Navigate to={"/admin/login"} />;
 }
 
 export function IsUserActive({ children }: Props) {
@@ -26,5 +26,5 @@ export function IsLoggedOut({ children }: Props) {
     console.log(`Status: `, isActive);
 
     if (!isActive) return children;
-    else return <Navigate to={"/404"} />;
+    else return <Navigate to={"/"} />;
 }

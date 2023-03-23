@@ -21,3 +21,24 @@ export const validateUName = asyncHandler(async (req, res, next) => {
     return genRes(res, 200, true, "Username is Valid!");
   }
 });
+
+export const authenticateUser = asyncHandler(async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    throw new ErrorResponse(
+      !email ? `Invalid Email!` : `Invalid Password!`,
+      400
+    );
+
+  const user = await User.findOne({ email });
+  console.log("Found USER!! ", user);
+
+  if (!user) throw new ErrorResponse(`Invalid Credentials!`, 404);
+
+  const status = await user.comparePwd(password);
+  if (!status) throw new ErrorResponse("Invalid Credentials!", 401);
+
+  if (user.verified) return genRes(res, 200, true, "Login Success!", { user });
+
+  throw new ErrorResponse("Current User is not Verified by Admin!", 401);
+});

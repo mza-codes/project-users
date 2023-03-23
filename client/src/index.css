@@ -36,6 +36,17 @@
     @apply btn-hover cursor-pointer;
 }
 
+.input-field {
+    padding: 6px 12px;
+    outline: transparent;
+    border: 2px solid gray;
+    border-radius: 6px;
+}
+
+.input-field:focus {
+    border-color: green;
+}
+
 /* ellipsis loader */
 .lds-ellipsis {
     display: inline-block;
