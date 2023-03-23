@@ -1,6 +1,5 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
-import { shallow } from "zustand/shallow";
 import { loginSchema, loginValues } from "../../schema";
 import useAuthService from "../../services/authService";
 import InputField from "../Input";
@@ -12,21 +11,19 @@ const initialValues: loginValues = {
 };
 
 export default function AdminSignUp() {
-    const [loading, setLoading] = useAuthService((s) => [s.loading, s.setLoading], shallow);
-    const adminLogin = useAuthService((s) => s.adminLogin);
+    const loading = useAuthService((s) => s.loading);
+    const adminSignup = useAuthService((s) => s.adminSignup);
     const route = useNavigate();
 
     async function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
-        setLoading(true);
-        const res = await adminLogin(values);
-        setLoading(false);
+        const res = await adminSignup(values);
         actions.setSubmitting(false);
-        if (res) route("/admin/dashboard");
+        if (res) route("/register-success");
     }
 
     return (
         <>
-            <h2 className="lg:text-5xl text-3xl underline-offset-2 underline pb-4">Admin Login</h2>
+            <h2 className="lg:text-5xl text-3xl underline-offset-2 underline pb-4">Admin SignUp</h2>
             <Formik
                 validateOnChange
                 initialValues={initialValues}
@@ -41,11 +38,11 @@ export default function AdminSignUp() {
                         <button
                             disabled={loading || props.isSubmitting}
                             type="submit"
-                            className="btn btn-hover bg-orange-500 hover:bg-orange-600 text-white mt-3"
+                            className="btn btn-hover bg-amber-500 hover:bg-amber-600 text-white mt-3"
                         >
                             {loading || props.isSubmitting ? "Loading.." : "Submit"}
                         </button>
-                        {(loading || props.isSubmitting) && <Loader color="#111" />}
+                        {(loading || props.isSubmitting) && <Loader color="#222" />}
                     </Form>
                 )}
             </Formik>

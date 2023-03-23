@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import RegisterSuccess from "./pages/RegisterSuccess";
 import AdminDashboard from "./pages/AdminDashboard";
+import { IsLoggedOut, IsAdmin } from "./middlewares";
+import LoadingPage from "./pages/LoadingPage";
 
 export default function Routes() {
     return useRoutes([
@@ -14,27 +16,55 @@ export default function Routes() {
         },
         {
             path: "/signup",
-            element: <Auth signup />,
+            element: (
+                <IsLoggedOut>
+                    <Auth signup />
+                </IsLoggedOut>
+            ),
         },
         {
             path: "/login",
-            element: <Auth login />,
+            element: (
+                <IsLoggedOut>
+                    <Auth login />
+                </IsLoggedOut>
+            ),
         },
         {
             path: "/register-success",
-            element: <RegisterSuccess />,
+            element: (
+                <IsLoggedOut>
+                    <RegisterSuccess />
+                </IsLoggedOut>
+            ),
         },
         {
             path: "/admin/login",
-            element: <Auth admin />,
+            element: (
+                <IsLoggedOut>
+                    <Auth admin />
+                </IsLoggedOut>
+            ),
         },
         {
             path: "/admin/signup",
-            element: <Auth adminSignup />,
+            element: (
+                <IsLoggedOut>
+                    <Auth adminSignup />
+                </IsLoggedOut>
+            ),
         },
         {
             path: "/admin/dashboard",
-            element: <AdminDashboard />,
+            element: (
+                <IsAdmin>
+                    <AdminDashboard />
+                </IsAdmin>
+            ),
+        },
+        {
+            path: "/loading",
+            element: <LoadingPage />,
         },
         {
             path: "*",

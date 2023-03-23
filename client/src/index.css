@@ -32,6 +32,10 @@
     @apply active:scale-95 transition-all ease-in-out font-semibold;
 }
 
+.icon {
+    @apply btn-hover cursor-pointer;
+}
+
 /* ellipsis loader */
 .lds-ellipsis {
     display: inline-block;
