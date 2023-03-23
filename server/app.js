@@ -12,7 +12,7 @@ import { authRoutes } from "./routes/authRoutes.js";
 import { adminRoutes } from "./routes/adminRoutes.js";
 
 const __dirname = path.resolve();
-let domain = `http://localhost:5173`;
+let domain = ENV.CLIENT_DOMAIN ?? `http://localhost:5173`;
 log.warn("NODE ENV: ", process.env.NODE_ENV);
 
 // Database Connection
