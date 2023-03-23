@@ -4,16 +4,13 @@
   <hr>
 
 ```bash
-    * Create ENV FILE (MUST) as follows.
-    * cd server/; cp .sample.env .env
+    * Create ENV FILE (MUST) as mentioned in server/.sample.env
     * npm i yarn (in case yarn is unavailable)
 
     * npm install
     * yarn run setup
-    * cd api/ && npm run predeploy
     * yarn run dev
-    
-    ## NB: make smaple.env
+
 ```
 
   <p align="center">

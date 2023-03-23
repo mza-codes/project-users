@@ -48,12 +48,6 @@ app.use(express.static("build"));
 app.use(helmet());
 
 // Routes
-/** 
-@OLD_Routes
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/app', recordRoutes);
-app.use('/api/v1/user', userRoutes);
-app.use('/api/v1/super-user', adminRoutes); */
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/admin", adminRoutes);

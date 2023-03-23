@@ -3,10 +3,12 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
 import LoadingPage from "./pages/LoadingPage";
 import Routes from "./routes";
+import Header from "./components/Header";
 
 function App() {
     return (
         <BrowserRouter>
+            <Header />
             <Toaster
                 position="top-center"
                 reverseOrder={true}
