@@ -5,6 +5,7 @@
 
 ```bash
     * Create ENV FILE (MUST) as mentioned in server/.sample.env
+    * Create ENV FILE (MUST) as mentioned in client/.env
     * npm i yarn (in case yarn is unavailable)
 
     * npm install
