@@ -12,7 +12,7 @@ export default function errorHandler(err, req, res, next) {
   }
 
   if (err.code === 11000) {
-    const message = "Duplicate Field Value Entered";
+    const message = `Resource already exists!`;
     err = new ErrorResponse(message, 400);
   }
 
@@ -25,6 +25,6 @@ export default function errorHandler(err, req, res, next) {
 
   res.status(err.statusCode || 500).json({
     success: false,
-    message: error.message || "Server Error",
+    message: err.message || "Server Error",
   });
 }
