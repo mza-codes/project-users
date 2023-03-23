@@ -3,6 +3,7 @@ import { loginSchema, loginValues } from "../../schema";
 import InputField from "../Input";
 import Loader from "../Loader";
 import useAuthService from "../../services/authService";
+import { useNavigate } from "react-router-dom";
 
 const initialValues: loginValues = {
     email: "",
@@ -13,9 +14,12 @@ const initialValues: loginValues = {
 export default function Login() {
     const loading = useAuthService((s) => s.loading);
     const loginUser = useAuthService((s) => s.loginUser);
+    const route = useNavigate();
 
     async function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
         const res = await loginUser(values);
+        if (res?.image_url !== null || res?.mobile !== null) route("/dashboard");
+        else if (res?.name) route("/complete-profile");
     }
 
     return (

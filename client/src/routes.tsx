@@ -9,6 +9,7 @@ import { IsLoggedOut, IsAdmin, IsUserActive } from "./middlewares";
 import LoadingPage from "./pages/LoadingPage";
 import ProfileCompletion from "./pages/ProfileCompletion";
 import UserDashboard from "./pages/UserDashboard";
+import Logout from "./pages/Logout";
 
 export default function Routes() {
     return useRoutes([
@@ -77,6 +78,14 @@ export default function Routes() {
             element: (
                 <IsUserActive>
                     <UserDashboard />
+                </IsUserActive>
+            ),
+        },
+        {
+            path: "/logout",
+            element: (
+                <IsUserActive>
+                    <Logout />
                 </IsUserActive>
             ),
         },

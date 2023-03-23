@@ -5,7 +5,7 @@ import useAuthService from "../../services/authService";
 export default function ExtraDetails() {
     const [err, setErr] = useState("");
     const loading = useAuthService((s) => s.loading);
-    const update = useAuthService((s) => s.updateUser);
+    const updateUser = useAuthService((s) => s.updateUser);
     const user = useAuthService((s) => s.user);
     const route = useNavigate();
 
@@ -17,12 +17,12 @@ export default function ExtraDetails() {
             data[i] = val;
         });
         console.log("Final Data: ", data);
-        const res = await update(user?._id ?? "", { mobile: data?.mobile ?? null });
+        const res = await updateUser(user?._id ?? "", data);
         if (res) route("/dashboard");
     };
 
     return (
-        <form onSubmit={handleSubmit} className="col border-2 lg:w-96 p-3 text-center center gap-2">
+        <form onSubmit={handleSubmit} className="col border-2= lg:w-96 p-3 text-left center gap-2">
             <label htmlFor="mobile" className="text-left">
                 Mobile number
             </label>
@@ -40,9 +40,13 @@ export default function ExtraDetails() {
             </label>
             <input type="file" name="image" id="image" required accept="image/*" hidden />
 
-            <span className="err-msg">This is an error</span>
+            <span className="err-msg">{err}</span>
 
-            <button type="submit" className="btn btn-hover bg-teal-500 hover:bg-teal-700 text-white">
+            <button
+                disabled={loading}
+                type="submit"
+                className="btn btn-hover bg-teal-500 hover:bg-teal-700 text-white"
+            >
                 Submit
             </button>
 

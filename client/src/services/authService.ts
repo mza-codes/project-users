@@ -45,6 +45,11 @@ const useAuthService = create<AuthService>()((set, get) => ({
             ...data,
         }));
     },
+    resetState() {
+        set((s) => ({
+            ...initialState,
+        }));
+    },
 
     async fetchData(request: AxiosPromise) {
         get().setLoading(true);
@@ -195,4 +200,5 @@ export interface AuthService extends store {
     toggleUser: (user: DBUser) => Promise<boolean>;
     loginUser: (data: any) => Promise<DBUser | null>;
     updateUser: (id: string, payload: Partial<DBUser>) => Promise<boolean>;
+    resetState: () => void;
 }
