@@ -17,7 +17,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
     setLoading(stat) {
         set((s) => ({
             ...s,
-            isLoading: stat
+            loading: stat
         }));
     },
     cancelRequest(req) {
@@ -38,13 +38,19 @@ const useAuthService = create<AuthService>()((set, get) => ({
         }));
     },
     async fetchData(request: AxiosPromise) {
+        get().setLoading(true);
+        let error = null,
+            result = null;
         try {
             const { data } = await request;
-            return [null, data];
+            result = data;
         } catch (err: any) {
             console.log(`Error Fetching Data: `, err);
             get().handleError(err, `Error in Request!`);
-            return [err, null];
+            error = err;
+        } finally {
+            get().setLoading(false);
+            return [error, result];
         }
     },
     async signUp(payload) {
@@ -60,10 +66,17 @@ const useAuthService = create<AuthService>()((set, get) => ({
 
         const [err, data] = await get().fetchData(API.get(`/auth/check-user/${uname}`, { signal: validate.signal }));
 
-        get().previous.result = data?.success ?? err?.response?.data?.success ?? false;
+        get().previous.result = data?.success ?? false;
 
         if (data) {
             toast.success(data?.message ?? "Valid!");
+            return true;
+        } else return false;
+    },
+    async adminLogin(formData) {
+        const [err, data] = await get().fetchData(API.post(`/admin/auth/login`, formData, { signal: genSignal() }));
+        if (data) {
+            toast.success(data?.message ?? "Admin Login Complete!");
             return true;
         } else return false;
     },
@@ -95,4 +108,5 @@ export interface AuthService extends store {
     setField: (field: field, value: any) => void;
     fetchData: (request: AxiosPromise) => Promise<[any, any]>
     validateUName: (uname: string) => Promise<boolean>;
+    adminLogin: (formdata: any) => Promise<boolean>;
 };

@@ -6,6 +6,7 @@ import useAuthService from "../../services/authService";
 import InputField from "../Input";
 import Loader from "../Loader";
 import Select from "../Select";
+import { shallow } from "zustand/shallow";
 
 const initialValues = {
     email: "",
@@ -18,7 +19,7 @@ const initialValues = {
 };
 
 export default function SignUp() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useAuthService((s) => [s.loading, s.setLoading], shallow);
     const signUp = useAuthService((s) => s.signUp);
     const route = useNavigate();
 
@@ -71,7 +72,7 @@ export default function SignUp() {
                             >
                                 {loading || props.isSubmitting ? "Loading.." : "Submit"}
                             </button>
-                            {(loading || props.isSubmitting) && <Loader color="#111" />}
+                            {(loading || props.isSubmitting) && <Loader color="orange" />}
                         </Form>
                     );
                 }}

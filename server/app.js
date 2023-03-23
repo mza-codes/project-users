@@ -9,6 +9,7 @@ import ENV from "./utils/validateEnv.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import { log } from "./utils/logger.js";
 import { authRoutes } from "./routes/authRoutes.js";
+import { adminRoutes } from "./routes/adminRoutes.js";
 
 const __dirname = path.resolve();
 let domain = `http://localhost:5173`;
@@ -55,6 +56,7 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/super-user', adminRoutes); */
 
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   log.warn("Accessing via *");

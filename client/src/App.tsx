@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
+import LoadingPage from "./pages/LoadingPage";
 import Routes from "./routes";
 
 function App() {
@@ -9,10 +11,12 @@ function App() {
                 position="top-center"
                 reverseOrder={true}
                 containerClassName="capitalize truncate"
-                toastOptions={{ duration: 3600 }}
+                toastOptions={{ duration: 5600 }}
                 gutter={4}
             />
-            <Routes />
+            <Suspense fallback={<LoadingPage />}>
+                <Routes />
+            </Suspense>
         </BrowserRouter>
     );
 }

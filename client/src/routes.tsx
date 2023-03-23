@@ -1,11 +1,12 @@
 import { useRoutes } from "react-router-dom";
+
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import RegisterSuccess from "./pages/RegisterSuccess";
+import AdminDashboard from "./pages/AdminDashboard";
 
-type Props = {};
-
-export default function Routes({}: Props) {
+export default function Routes() {
     return useRoutes([
         {
             path: "/",
@@ -22,6 +23,22 @@ export default function Routes({}: Props) {
         {
             path: "/register-success",
             element: <RegisterSuccess />,
+        },
+        {
+            path: "/admin/login",
+            element: <Auth admin />,
+        },
+        {
+            path: "/admin/signup",
+            element: <Auth adminSignup />,
+        },
+        {
+            path: "/admin/dashboard",
+            element: <AdminDashboard />,
+        },
+        {
+            path: "*",
+            element: <NotFound />,
         },
     ]);
 }
