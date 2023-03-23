@@ -45,3 +45,10 @@ export const getAllUsers = asyncHandler(async (req, res, next) => {
     { users }
   );
 });
+
+export const updateOneUser = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+  if (!user) throw new ErrorResponse("User does not exists!", 404);
+  return genRes(res, 200, true, `Updated One User!`, { user });
+});

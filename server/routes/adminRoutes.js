@@ -3,6 +3,7 @@ import {
   authenticateAdmin,
   createAdmin,
   getAllUsers,
+  updateOneUser,
 } from "../controllers/adminControllers.js";
 
 const router = express.Router();
@@ -12,5 +13,6 @@ const router = express.Router();
 router.post("/auth/login", authenticateAdmin);
 router.post("/auth/register", createAdmin);
 router.get("/get-all-users", getAllUsers);
+router.put("/update-user/:id", updateOneUser);
 
 export { router as adminRoutes };

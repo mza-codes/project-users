@@ -115,6 +115,18 @@ const useAuthService = create<AuthService>()((set, get) => ({
             return true;
         } else return false;
     },
+    async toggleUser(user) {
+        const [err, data] = await get().fetchData(
+            API.put(`/admin/update-user/${user._id}`, { verified: !user.verified }, { signal: genSignal() })
+        );
+        if (data?.success) {
+            get().DBUsers.filter((u) => u._id !== user._id);
+            // @ts-ignore
+            get().DBUsers.push(data?.user);
+            toast.success(`One User updated Successfully!`);
+            return true;
+        } else return false;
+    },
 }));
 
 export default useAuthService;
@@ -151,4 +163,5 @@ export interface AuthService extends store {
     adminLogin: (formdata: any) => Promise<boolean>;
     adminSignup: (formData: any) => Promise<boolean>;
     getAllUsers: (signal: AbortSignal) => Promise<boolean>;
+    toggleUser: (user: DBUser) => Promise<boolean>;
 }
