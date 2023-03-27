@@ -1,20 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAuthService from "../services/authService";
-
-const linksWAuth = [
-    {
-        name: "Dashboard",
-        path: "/dashboard",
-    },
-    {
-        name: "Admin Dashboard",
-        path: "/admin/dashboard",
-    },
-    {
-        name: "Logout",
-        path: "/logout",
-    },
-];
 
 const links = [
     {
@@ -37,22 +22,49 @@ const links = [
 
 export default function Header() {
     const isActive = useAuthService((s) => s.isActive);
+    const isAdmin = useAuthService((s) => s.isAdmin);
+
+    const linksWAuth = [
+        {
+            name: "Home",
+            path: "/",
+        },
+        {
+            name: "Dashboard",
+            path: "/dashboard",
+        },
+        isAdmin
+            ? {
+                  name: "Admin Dashboard",
+                  path: "/admin/dashboard",
+              }
+            : {
+                  name: "Profile",
+                  path: "/profile",
+              },
+        {
+            name: "Logout",
+            path: "/logout",
+        },
+    ];
+
     return (
         <header className="fixed h-[70px] bg-gray-800 text-white w-full row justify-between items-center gap-2">
             <b className="mx-4 md:text-4xl">Users -App</b>
             <ul className="row gap-4 mx-4">
                 {isActive
-                    ? linksWAuth.map((link) => (
-                          <li key={link.name}>
-                              <Link to={link.path}>{link.name}</Link>
-                          </li>
-                      ))
-                    : links.map((link) => (
-                          <li key={link.name}>
-                              <Link to={link.path}>{link.name}</Link>
-                          </li>
-                      ))}
+                    ? linksWAuth.map((link) => <HeaderLink key={link.name} link={link} />)
+                    : links.map((link) => <HeaderLink key={link.name} link={link} />)}
             </ul>
         </header>
+    );
+}
+
+function HeaderLink({ link }: { link: typeof links[0] }) {
+    const { pathname } = useLocation();
+    return (
+        <li className={`page-link ${pathname === link.path && "active"}`}>
+            <Link to={link.path}>{link.name}</Link>
+        </li>
     );
 }

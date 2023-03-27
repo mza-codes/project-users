@@ -59,7 +59,6 @@ const useAuthService = create<AuthService>()((set, get) => ({
             const { data } = await request;
             result = data;
         } catch (err: any) {
-            console.log(`Error Fetching Data: `, err);
             get().handleError(err, `Error in Request!`);
             error = err;
         } finally {
@@ -88,8 +87,8 @@ const useAuthService = create<AuthService>()((set, get) => ({
 
         get().previous.result = data?.success ?? false;
 
-        if (data) {
-            toast.success(data?.message ?? "Valid!");
+        if (data?.success) {
+            toast.success(data?.message ?? "Valid Username, Now SignUp!");
             return true;
         } else return false;
     },
@@ -103,6 +102,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
                 admin: data?.user,
                 isAdmin: true,
                 isActive: true,
+                user: null,
             });
             toast.success(data?.message ?? "Admin Login Complete!");
             return true;
@@ -148,8 +148,8 @@ const useAuthService = create<AuthService>()((set, get) => ({
                 admin: null,
             });
             toast.success(data?.message ?? "User Login Complete!");
-            return data?.user;
-        } else return null;
+            return { isLoggedIn: true, user: data?.user };
+        } else return { isLoggedIn: false, user: null };
     },
 
     async updateUser(id, payload) {
@@ -157,6 +157,7 @@ const useAuthService = create<AuthService>()((set, get) => ({
             API.put(`/admin/update-user/${id}`, payload, { signal: genSignal() })
         );
         if (data?.success) {
+            get().setStore({ user: data?.user });
             toast.success(`User updated Successfully!`);
             return true;
         } else return false;
@@ -198,7 +199,7 @@ export interface AuthService extends store {
     adminSignup: (formData: any) => Promise<boolean>;
     getAllUsers: (signal: AbortSignal) => Promise<boolean>;
     toggleUser: (user: DBUser) => Promise<boolean>;
-    loginUser: (data: any) => Promise<DBUser | null>;
+    loginUser: (data: any) => Promise<{ isLoggedIn: boolean; user: DBUser | null }>;
     updateUser: (id: string, payload: Partial<DBUser>) => Promise<boolean>;
     resetState: () => void;
 }

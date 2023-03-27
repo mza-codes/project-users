@@ -1,5 +1,7 @@
 export interface DBUser {
     _id: string;
+    createdAt: string;
+    updatedAt: string;
     email: string;
     password: string;
     name: string;
@@ -14,6 +16,8 @@ export interface DBUser {
 
 export interface DBUserAdmin {
     _id: string;
+    createdAt: string;
+    updatedAt: string;
     email: string;
     password: string;
     isAdmin: boolean;

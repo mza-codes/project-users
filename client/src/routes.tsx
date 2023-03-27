@@ -10,6 +10,7 @@ import LoadingPage from "./pages/LoadingPage";
 import ProfileCompletion from "./pages/ProfileCompletion";
 import UserDashboard from "./pages/UserDashboard";
 import Logout from "./pages/Logout";
+import Profile from "./pages/Profile";
 
 export default function Routes() {
     return useRoutes([
@@ -82,12 +83,24 @@ export default function Routes() {
             ),
         },
         {
+            path: "/profile",
+            element: (
+                <IsUserActive>
+                    <Profile />
+                </IsUserActive>
+            ),
+        },
+        {
             path: "/logout",
             element: (
                 <IsUserActive>
                     <Logout />
                 </IsUserActive>
             ),
+        },
+        {
+            path: "/loading",
+            element: <LoadingPage />,
         },
         {
             path: "*",

@@ -48,6 +48,7 @@ export const getAllUsers = asyncHandler(async (req, res, next) => {
 
 export const updateOneUser = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
+  console.log(req.body);
   const user = await User.findByIdAndUpdate(id, req.body, { new: true });
   if (!user) throw new ErrorResponse("User does not exists!", 404);
   return genRes(res, 200, true, `Updated One User!`, { user });

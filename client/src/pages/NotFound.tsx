@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 export default function NotFound() {
     return (
         <section className="page gap-3">
-            <h2 className="text-5xl">404 Page Not found</h2>
-            <span className="text-2xl">Perhaps You've mistyped the url ?</span>
+            <h2 className="text-5xl">404 &nbsp;Page Not found</h2>
+            <span className="text-xl">
+                This URL does not seems to exist! <br /> Perhaps You've mistyped the url ?
+            </span>
             <div className="row gap-2 center">
                 <Link
                     // @ts-ignore

@@ -36,6 +36,14 @@
     @apply btn-hover cursor-pointer;
 }
 
+.page-link {
+    @apply hover:text-opacity-90 text-opacity-40 text-white;
+}
+
+.page-link.active {
+    @apply text-opacity-100;
+}
+
 .input-field {
     padding: 6px 12px;
     outline: transparent;
