@@ -11,7 +11,7 @@ export default function Logout() {
 
     useEffect(() => {
         !ran.current && resetState();
-        !ran.current && toast.success("Logount Complete!");
+        !ran.current && toast.success("Logout Complete!");
 
         return () => {
             ran.current = true;

@@ -1,6 +1,5 @@
 import { Form, Formik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
-import { shallow } from "zustand/shallow";
 import { loginSchema, loginValues } from "../../schema";
 import useAuthService from "../../services/authService";
 import InputField from "../Input";
@@ -12,14 +11,13 @@ const initialValues: loginValues = {
 };
 
 export default function AdminLogin() {
-    const [loading, setLoading] = useAuthService((s) => [s.loading, s.setLoading], shallow);
+    const loading = useAuthService((s) => s.loading);
     const adminLogin = useAuthService((s) => s.adminLogin);
     const route = useNavigate();
 
     async function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
-        setLoading(true);
         const res = await adminLogin(values);
-        setLoading(false);
+
         actions.setSubmitting(false);
         if (res) route("/admin/dashboard");
     }

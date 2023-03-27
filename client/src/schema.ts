@@ -24,3 +24,8 @@ export const loginSchema = Yup.object().shape({
 });
 
 export interface loginValues extends Yup.Asserts<typeof loginSchema> { };
+
+export const extraDetailSchema = Yup.object().shape({
+    mobile: Yup.string().email().required().min(5).max(70),
+    image: Yup.string().required().min(5).max(24),
+});

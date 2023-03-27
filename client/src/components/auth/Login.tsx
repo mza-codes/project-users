@@ -18,8 +18,10 @@ export default function Login() {
 
     async function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
         const res = await loginUser(values);
-        if (res?.image_url !== null || res?.mobile !== null) route("/dashboard");
-        else if (res?.name) route("/complete-profile");
+        if (res.isLoggedIn) {
+            if (res.user?.mobile || res.user?.image_url) route("/dashboard");
+            else route("/complete-profile");
+        }
     }
 
     return (

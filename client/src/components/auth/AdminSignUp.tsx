@@ -32,8 +32,8 @@ export default function AdminSignUp() {
             >
                 {(props) => (
                     <Form className="col center gap-2">
-                        <InputField type="email" placeholder="james@xyz.com" name="email" />
-                        <InputField type="password" placeholder="Password" name="password" />
+                        <InputField type="email" placeholder="admin@xyz.com" name="email" />
+                        <InputField type="password" placeholder="Enter a Password" name="password" />
 
                         <button
                             disabled={loading || props.isSubmitting}

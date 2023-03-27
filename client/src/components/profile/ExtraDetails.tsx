@@ -17,7 +17,9 @@ export default function ExtraDetails() {
             data[i] = val;
         });
         console.log("Final Data: ", data);
-        const res = await updateUser(user?._id ?? "", data);
+        const res = await updateUser(user?._id ?? "", {
+            mobile: data?.mobile ?? user?.mobile,
+        });
         if (res) route("/dashboard");
     };
 
@@ -27,7 +29,7 @@ export default function ExtraDetails() {
                 Mobile number
             </label>
             <input
-                type="tel"
+                type="number"
                 placeholder="Mobile Number"
                 className="input-field"
                 required
@@ -35,10 +37,10 @@ export default function ExtraDetails() {
                 minLength={8}
                 name="mobile"
             />
-            <label className="btn btn-hover bg-cyan-200 hover:bg-cyan-300" htmlFor="image">
+            <label className="btn btn-hover bg-cyan-200 hover:bg-cyan-300 invalid:bg-red-300" htmlFor="image">
                 Upload Image
             </label>
-            <input type="file" name="image" id="image" required accept="image/*" hidden />
+            <input type="file" name="image_url" id="image" accept="image/*" hidden />
 
             <span className="err-msg">{err}</span>
 

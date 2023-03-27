@@ -27,9 +27,9 @@ export default function SignUp() {
 
     async function handleSubmit(values: typeof initialValues, actions: FormikHelpers<typeof initialValues>) {
         console.log({ values, actions });
-        setLoading(true);
+        // setLoading(true);
         const res = await signUp(values);
-        setLoading(false);
+        // setLoading(false);
         actions.setSubmitting(false);
         if (res) route("/register-success");
     }
@@ -38,7 +38,7 @@ export default function SignUp() {
         <>
             <h2 className="lg:text-5xl text-3xl underline-offset-2 underline pb-4">SignUp</h2>
             <Formik
-                validateOnChange
+                validateOnChange={true}
                 initialValues={initialValues}
                 onSubmit={handleSubmit}
                 validationSchema={signupSchema}
