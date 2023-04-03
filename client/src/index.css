@@ -9,7 +9,15 @@
 }
 
 .page {
-    @apply min-h-[100dvh] bg-gray-100 flex flex-col items-center justify-center;
+    @apply min-h-[100dvh] bg-gradient-to-br from-gray-300 via-[#ffefc2] to-gray-300 flex flex-col items-center justify-center;
+}
+
+.auth-title{
+    @apply lg:text-5xl text-3xl underline-offset-4 underline mb-4 shadow-lg hover:shadow-xl
+}
+
+.header-bg{
+    @apply bg-gradient-to-l from-slate-800 via-[#976f00] to-slate-800 shadow-lg hover:shadow-xl
 }
 
 .row {

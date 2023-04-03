@@ -19,7 +19,7 @@ export default function AdminDashboard() {
     if (loading || users.length <= 0) return <LoadingPage />;
     return (
         <section className="page">
-            <h2 className="text-4xl py-2 my-6">Welcome to Dashboard!</h2>
+            <h2 className="text-4xl py-2 my-8">Welcome to Dashboard!</h2>
             <Users users={users} />
         </section>
     );

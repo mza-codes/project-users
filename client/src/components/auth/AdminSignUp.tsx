@@ -23,7 +23,7 @@ export default function AdminSignUp() {
 
     return (
         <>
-            <h2 className="lg:text-5xl text-3xl underline-offset-2 underline pb-4">Admin SignUp</h2>
+            <h2 className="auth-title">Admin SignUp</h2>
             <Formik
                 validateOnChange
                 initialValues={initialValues}
@@ -38,7 +38,7 @@ export default function AdminSignUp() {
                         <button
                             disabled={loading || props.isSubmitting}
                             type="submit"
-                            className="btn btn-hover bg-amber-500 hover:bg-amber-600 text-white mt-3"
+                            className="btn btn-hover bg-orange-500 hover:bg-orange-600 text-white mt-3"
                         >
                             {loading || props.isSubmitting ? "Loading.." : "Submit"}
                         </button>

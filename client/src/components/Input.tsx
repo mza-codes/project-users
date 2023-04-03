@@ -18,7 +18,7 @@ export default function InputField(props: InputFieldProps) {
             <span className="label">{props.name}</span>
             <div className="relative">
                 <input
-                    className={`sm:w-[320px] ${isError ? "error" : isValid ? "success" : "normal"}`}
+                    className={`sm:min-w-[320px] min-w-[200px] shadow-lg hover:shadow-xl ${isError ? "error" : isValid ? "success" : "normal"}`}
                     {...field}
                     {...props}
                 />

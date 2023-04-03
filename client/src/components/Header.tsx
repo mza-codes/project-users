@@ -49,7 +49,7 @@ export default function Header() {
     ];
 
     return (
-        <header className="fixed h-[70px] bg-gray-800 text-white w-full row justify-between items-center gap-2">
+        <header className="fixed h-[70px] header-bg text-white w-full row justify-between items-center gap-2">
             <b className="mx-4 md:text-4xl">Users -App</b>
             <ul className="row gap-4 mx-4">
                 {isActive

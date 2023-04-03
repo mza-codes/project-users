@@ -24,7 +24,7 @@ export default function AdminLogin() {
 
     return (
         <>
-            <h2 className="lg:text-5xl text-3xl underline-offset-2 underline pb-4">Admin Login</h2>
+            <h2 className="auth-title">Admin Login</h2>
             <Formik
                 validateOnChange
                 initialValues={initialValues}

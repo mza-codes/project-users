@@ -36,7 +36,7 @@ export default function SignUp() {
 
     return (
         <>
-            <h2 className="lg:text-5xl text-3xl underline-offset-2 underline pb-4">SignUp</h2>
+            <h2 className="auth-title">SignUp</h2>
             <Formik
                 validateOnChange={true}
                 initialValues={initialValues}

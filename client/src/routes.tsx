@@ -1,16 +1,17 @@
 import { useRoutes } from "react-router-dom";
-
-import Auth from "./pages/Auth";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import RegisterSuccess from "./pages/RegisterSuccess";
-import AdminDashboard from "./pages/AdminDashboard";
 import { IsLoggedOut, IsAdmin, IsUserActive } from "./middlewares";
-import LoadingPage from "./pages/LoadingPage";
-import ProfileCompletion from "./pages/ProfileCompletion";
-import UserDashboard from "./pages/UserDashboard";
-import Logout from "./pages/Logout";
-import Profile from "./pages/Profile";
+import { lazy } from "react";
+
+const Auth = lazy(() => import("./pages/Auth"));
+const Home = lazy(() => import("./pages/Home"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const RegisterSuccess = lazy(() => import("./pages/RegisterSuccess"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const LoadingPage = lazy(() => import("./pages/LoadingPage"));
+const ProfileCompletion = lazy(() => import("./pages/ProfileCompletion"));
+const UserDashboard = lazy(() => import("./pages/UserDashboard"));
+const Logout = lazy(() => import("./pages/Logout"));
+const Profile = lazy(() => import("./pages/Profile"));
 
 export default function Routes() {
     return useRoutes([
